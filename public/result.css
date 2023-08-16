@@ -1,0 +1,176 @@
+*{
+    margin: 0;
+    /* LAVA THEME */
+    /* --first: #370617;
+    --second: #e85d04;
+    --third: #9d0208;
+    --fourth: #6a040f;
+    --text: #ffecd1; */
+    /* FISH THEME  */
+    --first: #15616d;
+    --second: #f9b24d;
+    --third: #0e9594;
+    --fourth: #001524;
+    --text: #ffecd1;
+    /* RED-GRAY THEME */
+    /* --first: #f5f3f4;
+    --second: #867876;
+    --third: #d3d3d3;
+    --fourth: #4d0001;
+    --text: #ae0104; */
+    /* SOLID NIGHT THEME */
+    /* --first: #748cab;
+    --second: #ebebeb;
+    --third: #1d2d44;
+    --fourth: #0d1321;
+    --text: #f0ebd8; */
+}
+
+body{
+    background-color: var(--first);
+    font-family: 'Sriracha', cursive;
+    overflow-x: hidden;
+}
+
+.spacer{
+    /* aspect-ratio: 960/300; */
+    position: absolute;
+    width: 100vw;
+    /* width: 1080px; */
+    /* height: 50vw; */
+    /* height: min(50vw, 550px); */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    z-index: -1;
+}
+
+.wave1{
+    background-image: url('./wave5.svg');
+    height: 800px;
+}
+
+h1{
+    text-align: center;
+    padding-top: min(3vw, 2rem);
+    margin-bottom: min(6vw, 2rem);
+}
+
+/* h2{
+    color:var(--fourth);
+    margin-bottom: 1rem;
+} */
+
+.content{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* flex-direction: column; */
+}
+
+.center{
+    margin-inline: 1rem;
+}
+
+
+#dayHolder{
+    max-width: 39rem;
+}
+
+.dayCard{
+    width: 12rem;
+    /* margin-right: 1rem; */
+    margin-inline: 0.5rem;
+    margin-top: 0.5rem;
+    padding: 0;
+}
+
+button{
+    position: relative;
+    /* height: 2.5rem; */
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text);
+    /* color: #ffffff; */
+    background-color: var(--third);
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    border: 0;
+    border-radius: 3px;
+    /* border-color: var(--fourth); */
+}
+
+.dayCard > p{
+    padding-top: 0.2rem;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    /* height: 1.2rem; */
+    padding: 0.6rem 0;
+}
+
+.counter{
+    position: absolute;
+    right: 0.2rem;
+    top: -0.2rem;
+    width: 1.1rem;
+    height: 1rem;
+    /* border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem; */
+    border-radius: 0.5rem;
+    background-color: var(--second);
+    color: var(--fourth);
+}
+
+.list{
+    /* background-color: var(--third);
+    color: var(--text); */
+    background-color: var(--second);
+    color: var(--fourth);
+    /* border: solid 2px var(--second); */
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    text-align: left;
+    /* height: auto; */
+}
+
+.month{
+    background-color: var(--fourth);
+}
+
+@media screen and (max-width: 698px) {
+/* @media screen and (max-width: 538px) { */
+    
+
+    #dayHolder{
+        width: 90vw;
+        margin-inline: 5vw;
+    }
+
+    .dayCard{
+        margin-inline: 2vw;
+        width: 41vw;
+    }
+
+    /* #dayHolder{
+        display: flex;
+        justify-content: right;
+        flex-direction: column;
+    }
+
+    .dayCard{
+        width: 80vw;
+    }
+
+    .dayCard p:first-child, .dayCard p:nth-child(2){
+        width: 50%;
+        margin: 0;
+    }
+
+    .dayCard > p{
+        display: inline-block;
+        margin-inline: 0.2rem;
+    }
+    
+    .month{
+        background-color: var(--fourth);
+    } */
+}

@@ -1,0 +1,219 @@
+*{
+    margin: 0;
+    /* LAVA THEME */
+    /* --first: #370617;
+    --second: #e85d04;
+    --third: #9d0208;
+    --fourth: #6a040f;
+    --text: #ffecd1; */
+    /* FISH THEME  */
+    --first: #15616d;
+    --second: #f9b24d;
+    --third: #0e9594;
+    --fourth: #001524;
+    --text: #ffecd1;
+    /* RED-GRAY THEME */
+    /* --first: #f5f3f4;
+    --second: #867876;
+    --third: #d3d3d3;
+    --fourth: #4d0001;
+    --text: #ae0104; */
+    /* SOLID NIGHT THEME */
+    /* --first: #748cab;
+    --second: #ebebeb;
+    --third: #1d2d44;
+    --fourth: #0d1321;
+    --text: #f0ebd8; */
+}
+
+body{
+    background-color: var(--first);
+    font-family: 'Sriracha', cursive;
+    overflow-x: hidden;
+    /* width: 100%; */
+}
+
+.spacer{
+    /* aspect-ratio: 960/300; */
+    position: absolute;
+    width: 100vw;
+    /* width: 1080px; */
+    /* height: 50vw; */
+    /* height: min(50vw, 550px); */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    z-index: -1;
+}
+
+.wave1{
+    background-image: url('./wave1.svg');
+    height: 800px;
+}
+
+.wave2{
+    background-image: url('./wave2.svg');
+    height: 200px;
+}
+
+h1{
+    text-align: center;
+    color:var(--fourth);
+    /* padding-top: 4rem;
+    margin-bottom: 3rem; */
+    padding-top: 3vw;
+    margin-bottom: 6vw;
+    /* text-shadow:  0 0 3px var(--text); */
+}
+
+h2{
+    color: var(--fourth);
+
+}
+
+.content{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* flex-direction: column; */
+}
+/* .calHolder{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+} */
+
+#dayHolder{
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    grid-gap: 3px;
+    /* width: min(40rem, 90vw); */
+    width: 40rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+button{
+    border: 0;
+    height: 2.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text);
+    background-color: var(--third);
+    transition: all 0.3s ease-in-out;
+    border-radius: 3px;
+}
+
+/* .dayButton{
+    color: var(--second);
+} */
+
+.dayButton:hover{
+    background-color: var(--fourth);
+    cursor: pointer;
+}
+
+.dayButton:active{
+    background-color: var(--second);
+    color: var(--first)
+}
+
+.chosen{
+    background-color: var(--second);
+    color: var(--first)
+}
+
+.chosen:hover{
+    background-color: var(--second);
+    color: var(--first)
+}
+
+.dayOfWeek{
+    background-color: var(--fourth);
+}
+
+.unclickable{
+    pointer-events: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+label{
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: white
+}
+
+input{
+    height: 1.7rem;
+    font-size: 1rem;
+    margin-left: 1rem;
+    margin-right: 5.1rem;
+}
+
+
+footer{
+    /* background-color: var(--fourth); */
+    color: var(--text);
+    /* padding-top: 15rem; */
+    padding-top: 7rem;
+    /* padding-bottom: 15rem; */
+}
+
+/* .invisible{
+    display: none;
+} */
+
+
+@media screen and (max-width: 698px) {
+
+    h2{
+        margin-left: 1rem;
+    }
+    
+    #dayHolder{
+        /* width: auto;
+        margin-inline: 1rem; */
+        width: 94vw;
+        margin-inline: 3vw;
+    }
+    
+    /* form{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    } */
+    
+    /* .inForm{
+        display: flex;
+        justify-content: center;
+        width: 10rem;
+        text-align: center;
+    } */
+
+    label{
+        display: block;
+        text-align: center;
+    }
+    
+    input{
+        margin-right: 0;
+        display: block;
+        width: 40vw;
+        margin-left: 30vw;
+    }
+    
+    .create{
+        display: block;
+        margin-top: 1rem;
+        margin-left: 20vw;
+        width: 60vw;
+    }
+
+    /* .dayButton:hover{
+        background-color: var(--third);
+    } */
+}

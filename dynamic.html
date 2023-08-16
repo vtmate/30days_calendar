@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic</title>
+    <link rel="stylesheet" href="dynamic.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Narnoor&family=Patrick+Hand&family=Sriracha&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+    <div class="spacer wave1"></div>
+    <h1>Response To Event</h1>
+    <div class="content">
+        <div class="center">
+            <h2>Choose the days good for you:</h2>
+            <div id="dayHolder"></div>
+            <form id="form">
+                <div class="input">
+                    <label for="name">Your name:</label>
+                    <input name="name" type="text" id="name">
+                </div>
+                <div>
+                    <button class="dayCard submit" type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+
+        //sending data to the server for POSTING
+        const form = document.getElementById('form')
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(form)
+            const name = formData.get('name')
+            //get the link name from url
+            const URL = window.location.href;
+            const link = URL.split('/').pop();
+            console.log('name: ' + name)
+            const datas = {
+                link: link,
+                days: chosen,
+                name: name
+            };
+
+            
+            fetch('http://localhost:5000/getResponse', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify( datas )
+            })
+            .then(res => res.json())
+            .then(data => console.log(data))
+            .catch(err => console.log(err))
+
+            // window.location.href = 'resonse2.html';
+            window.location.href = `http://127.0.0.1:5500/HTML/idoegyezteto/30days/response2.html?message=http://localhost:5000/` + `${link}` + '/result';
+        })
+
+
+        const days = JSON.parse('{{ dynamicData }}');
+        const dayHolder = document.getElementById("dayHolder");
+        const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+        const d = new Date();
+        // console.log(d);
+        const currentDay = d.getDate();
+
+        var chosen = [];
+
+        class DayCard{
+            thisMonth;
+            nextMonth;
+            dayCard;
+            isChosen;
+            constructor(num){
+                this.thisMonth = month[d.getMonth()];
+                if(d.getMonth() == 11) this.nextMonth = month[0];
+                else this.nextMonth = month[d.getMonth() + 1];
+                this.dayCard = document.createElement('button');
+                //adding texts to button
+                if(parseInt(num) >= currentDay){
+                    this.dayCard.innerHTML = `<p class="month">${this.thisMonth}</p><p>${num}</p>`;
+                } else {
+                    this.dayCard.innerHTML = `<p class="month">${this.nextMonth}</p><p>${num}</p>`;
+                }
+                this.dayCard.classList.add('dayCard');
+                this.isChosen = false;
+
+                this.dayCard.addEventListener('click', () => {
+                    if(this.isChosen){
+                        this.isChosen = false;
+                        this.dayCard.classList.remove("chosen")
+                        chosen.pop(num);
+                    } else {
+                        this.isChosen = true;
+                this.dayCard.classList.add("chosen")
+                chosen.push(num);
+                
+                //lista lerendezése(elől a mostani hónap)
+                const curDays = []
+                const nextDays = [] //days in next month
+                chosen.forEach(day => {
+                    if(day >= currentDay) curDays.push(day);
+                    else nextDays.push(day);
+                })
+                //sorting the two arrays
+                curDays.sort(function(a, b){ return a - b});
+                nextDays.sort(function(a, b){ return a - b});
+                //concatenating them
+                chosen = curDays.concat(nextDays);
+                console.log('chosen: ' + chosen)
+                    }
+                })
+            }
+
+            get(){
+                return this.dayCard;
+            }
+        }
+
+        days.forEach(element => {
+            var b = new DayCard(element);
+            dayHolder.append(b.get());
+            // const p = document.createElement('p');
+            // p.textContent = element;
+            // dayHolder.append(p);
+        });
+    </script>
+</body>
+</html>
